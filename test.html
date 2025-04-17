@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>會考倒數</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+            background-color: #f0f8ff;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #333;
+        }
+        p {
+            font-size: 1.8em;
+            color: #0077cc;
+        }
+    </style>
+</head>
+<body>
+    <h1>會考倒數計時</h1>
+    <p id="countdown"></p>
+
+    <script>
+        function updateCountdown() {
+            const examDate = new Date("2026-05-16");
+            const today = new Date();
+
+            // 計算剩餘的毫秒數
+            const timeDiff = examDate - today;
+
+            // 換算成天
+            const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+            const countdownText = daysLeft > 0
+                ? `距離會考還有 ${daysLeft} 天！`
+                : daysLeft === 0
+                ? "今天就是會考日，加油！"
+                : `會考已經過了 ${-daysLeft} 天。`;
+
+            document.getElementById("countdown").textContent = countdownText;
+        }
+
+        updateCountdown();
+    </script>
+</body>
+</html>
